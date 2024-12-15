@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        a {
+            display: block;
+            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Code Viewer</h1>
+    <p>Click on the links below to view the corresponding code:</p>
+
+    <!-- Links to display the code -->
+    <a href="#" id="show-fizzbuzz">Show FizzBuzz Code</a>
+    <a href="#" id="show-sum">Show Sum Function Code</a>
+
+    <!-- Container for displaying the code -->
+    <div id="code-container"></div>
+
+    <script>
+        // Code snippets
+        const fizzBuzzCode = `
+let FizzBuzz = function(n) {
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+        if (i % 15 === 0) arr.push("FizzBuzz");
+        else if (i % 5 === 0) arr.push("Buzz");
+        else if (i % 3 === 0) arr.push("Fizz");
+        else arr.push(i.toString());
+    }
+    return arr;
+};
+
+console.log(FizzBuzz(100));
+`;
+
+        const sumCode = `
+function sum(a, b) {
+    let sum = a + b;
+    setTimeout(() => {
+        console.log(\`The sum is \${sum}\`);
+    }, 0);
+}
+
+console.log(sum(3, 5));
+`;
+
+        // Event listeners for links
+        document.getElementById('show-fizzbuzz').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            document.getElementById('code-container').innerHTML = `<pre>${fizzBuzzCode}</pre>`;
+        });
+
+        document.getElementById('show-sum').addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            document.getElementById('code-container').innerHTML = `<pre>${sumCode}</pre>`;
+        });
+    </script>
+</body>
+</html>
